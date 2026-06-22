@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huisstijl Lab023 — voorbeeld</title>
+  <link rel="stylesheet" href="huisstijl.css">
+  <style>
+    /* Alleen voor deze voorbeeldpagina */
+    .rij { margin-bottom: 22px; }
+    .uitleg { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+  <main class="app">
+
+    <p class="uitleg" style="margin-bottom:18px;">Zo ziet de vaste kop eruit op elke site.
+      Alleen het woord tussen &lt;em&gt; verandert; dat krijgt automatisch het blauwe thema.
+      Het paneel en de kaart volgen de glaslook van mijnweer.</p>
+
+    <div class="rij">
+      <h1 class="merk">Mijn<em>Weer</em></h1>
+      <div class="merk-sub">Bijgewerkt: 2026-06-22 20:30</div>
+    </div>
+
+    <div class="rij">
+      <h1 class="merk">Mijn<em>Verbruik</em></h1>
+      <div class="merk-sub">Bijgewerkt: 2026-06-22 20:30</div>
+    </div>
+
+    <div class="rij">
+      <h1 class="merk">Mijn<em>Radar</em></h1>
+      <div class="merk-sub">Bijgewerkt: 2026-06-22 20:30</div>
+    </div>
+
+    <div class="kaart">
+      <strong>Voorbeeld van een kaart</strong>
+      <p class="uitleg">Kaarten, randen, kleuren en de glaslook komen uit huisstijl.css,
+        zodat elke site dezelfde uitstraling houdt.</p>
+    </div>
+
+  </main>
+
+</body>
+</html>
