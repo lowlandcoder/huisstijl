@@ -18,18 +18,24 @@ if (-not (Test-Path $bron)) {
     exit 1
 }
 
+# Een site kan huisstijl.css bovenin de sitemap hebben (statische site) of in
+# de submap static (site met een achterkant, zoals mijnrecepten en mijnwijn).
+# Beide plekken worden bijgewerkt als het bestand er al staat.
 $aantal = 0
 Get-ChildItem -Path $basis -Directory |
     Where-Object { $_.FullName -ne $PSScriptRoot } |
     ForEach-Object {
-        $doel = Join-Path $_.FullName "huisstijl.css"
-        if (Test-Path $doel) {
-            Copy-Item $bron $doel -Force
-            Write-Host "Bijgewerkt: $($_.Name)" -ForegroundColor Green
-            $aantal++
+        $site = $_
+        @("huisstijl.css", "static\huisstijl.css") | ForEach-Object {
+            $doel = Join-Path $site.FullName $_
+            if (Test-Path $doel) {
+                Copy-Item $bron $doel -Force
+                Write-Host "Bijgewerkt: $($site.Name)\$_" -ForegroundColor Green
+                $aantal++
+            }
         }
     }
 
 Write-Host ""
-Write-Host "Klaar. $aantal site(s) bijgewerkt."
+Write-Host "Klaar. $aantal bestand(en) bijgewerkt."
 Write-Host "Vergeet niet de bijgewerkte sites naar de webserver te kopieren (scp) en vast te leggen in GitHub."
